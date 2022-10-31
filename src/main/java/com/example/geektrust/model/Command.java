@@ -19,7 +19,7 @@ public abstract class Command {
 
     List<BufferTime> bufferTimes = Arrays.asList(new BufferTime("09:00","09:15"),
             new BufferTime("13:15","13:45"),
-            new BufferTime("18:15","19:15"));
+            new BufferTime("18:45","19:00"));
 
     public abstract String executeCommand(List<String> args);
 }

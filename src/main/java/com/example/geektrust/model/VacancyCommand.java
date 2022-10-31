@@ -1,5 +1,7 @@
 package com.example.geektrust.model;
 
+import com.example.geektrust.util.Constants;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,7 +19,7 @@ public class VacancyCommand extends Command {
             room = room.getNextAvailableRoom();
         }
         while(room != null);
-        return availableRooms.stream()
+        return availableRooms.isEmpty() ? Constants.NO_VACANT_ROOM : availableRooms.stream()
                 .collect(Collectors.joining(" "));
     }
 

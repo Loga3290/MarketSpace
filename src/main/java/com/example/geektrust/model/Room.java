@@ -1,11 +1,13 @@
 package com.example.geektrust.model;
 
 import com.example.geektrust.exceptionhandling.IncorrecInputException;
+import com.example.geektrust.util.Constants;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public interface Room {
+
     Integer getCapacity();
     String getName();
     List<Meeting> getMeetingsSchdeduled();
@@ -19,7 +21,7 @@ public interface Room {
     default String addMeeting(Meeting meeting, String capacity, List<Meeting> meetingsScheduled) {
         //Validate the requirements
         if(!validate(Integer.parseInt(capacity))){
-            throw new IncorrecInputException("NO_VACANT_ROOM");
+            throw new IncorrecInputException(Constants.NO_VACANT_ROOM);
         }
 
         //If room capacity fits
@@ -36,7 +38,7 @@ public interface Room {
         if(nextRoomToCheckAvl != null){
             return nextRoomToCheckAvl.addMeeting(meeting, capacity, nextRoomToCheckAvl.getMeetingsSchdeduled());
         }
-        return "NO_VACANT_ROOM";
+        return Constants.NO_VACANT_ROOM;
     }
 
     default void getAvailability(List<Meeting> meetingsSchdeduled, List<String> availableRooms, Meeting meeting){
@@ -45,4 +47,7 @@ public interface Room {
             availableRooms.add(this.getName());
         }
     }
+
+    String addMeeting(Meeting meeting, String capacity);
+
 }

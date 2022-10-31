@@ -65,17 +65,11 @@ public class Meeting {
         return fromDateTime;
     }
 
-    public void setFromDateTime(LocalDateTime fromDateTime) {
-        this.fromDateTime = fromDateTime;
-    }
 
     public LocalDateTime getToDateTime() {
         return toDateTime;
     }
 
-    public void setToDateTime(LocalDateTime toDateTime) {
-        this.toDateTime = toDateTime;
-    }
 
 
     boolean anyMeetingsExistsBetween(Meeting newMeeting) {
@@ -87,13 +81,15 @@ public class Meeting {
     }
 
     private boolean checkIfAnyMeetingsScheduled(LocalDateTime fromDateTime, LocalDateTime toDateTime) {
-        if (fromDateTime.isAfter(getFromDateTime())
+        if ((fromDateTime.isAfter(getFromDateTime())
+                || fromDateTime.isEqual(getFromDateTime()))
                 && fromDateTime.isBefore(getToDateTime())) {
             return true;
         }
 
         if (toDateTime.isAfter(getFromDateTime())
-                && toDateTime.isBefore(getToDateTime())) {
+                && (toDateTime.isBefore(getToDateTime()))
+                || toDateTime.isEqual(getToDateTime())) {
             return true;
         }
         return false;

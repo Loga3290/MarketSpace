@@ -45,4 +45,9 @@ public class Cave implements Room {
     public Room getNextAvailableRoom() {
         return nextRoomToCheckAvl;
     }
+
+    @Override
+    public String addMeeting(Meeting meeting, String capacity) {
+        return Room.super.addMeeting(meeting, capacity, meetingsScheduled);
+    }
 }
