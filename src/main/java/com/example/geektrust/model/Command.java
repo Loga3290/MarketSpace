@@ -8,14 +8,12 @@ public abstract class Command {
     Room room;
 
     Command(){
-        room = Cave.getInstance();
-        Room tower = Tower.getInstance();
-        Room mansion = Mansion.getInstance();
+        room = new Cave();
+        Room tower = new Tower();
+        Room mansion = new Mansion();
         room.setNextAvailableRoom(tower);
         tower.setNextAvailableRoom(mansion);
     }
-
-
 
     List<BufferTime> bufferTimes = Arrays.asList(new BufferTime("09:00","09:15"),
             new BufferTime("13:15","13:45"),

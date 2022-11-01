@@ -10,9 +10,9 @@ public class Mansion implements Room{
     private List<Meeting> meetingsScheduled = new ArrayList<>();
     private static Mansion mansion = null;
     private Room nextRoomToCheckAvl;
-    private Mansion(){
+    /*private Mansion(){
 
-    }
+    }*/
     @Override
     public Integer getCapacity() {
         return capacity;
@@ -23,12 +23,12 @@ public class Mansion implements Room{
         return name;
     }
 
-    public static Room getInstance() {
+    /*public static Room getInstance() {
         if(mansion == null){
             mansion = new Mansion();
         }
         return mansion;
-    }
+    }*/
 
     @Override
     public List<Meeting> getMeetingsSchdeduled() {

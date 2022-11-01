@@ -10,9 +10,6 @@ public class Cave implements Room {
     private List<Meeting> meetingsScheduled = new ArrayList<>();
     private static Cave cave = null;
     private Room nextRoomToCheckAvl;
-    private Cave(){
-
-    }
 
     @Override
     public Integer getCapacity() {
@@ -27,13 +24,6 @@ public class Cave implements Room {
     @Override
     public List<Meeting> getMeetingsSchdeduled() {
         return this.meetingsScheduled;
-    }
-
-    public static Room getInstance() {
-        if(cave == null){
-            cave = new Cave();
-        }
-        return cave;
     }
 
     @Override

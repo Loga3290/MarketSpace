@@ -21,13 +21,6 @@ public class Tower implements Room {
         return name;
     }
 
-    public static Room getInstance() {
-        if (tower == null) {
-            tower = new Tower();
-        }
-        return tower;
-    }
-
     @Override
     public void setNextAvailableRoom(Room room) {
         this.nextRoomToCheckAvl = room;

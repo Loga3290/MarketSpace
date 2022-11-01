@@ -10,7 +10,9 @@ public class VacancyCommand extends Command {
 
     @Override
     public String executeCommand(List<String> args) {
-        Meeting meeting = new Meeting(args.get(0), args.get(1), this.bufferTimes);
+        String fromDateTime = args.get(0);
+        String toDateTime = args.get(1);
+        Meeting meeting = new Meeting(fromDateTime, toDateTime, this.bufferTimes);
 
         List<String> availableRooms = new ArrayList<>();
         Room room = this.room;
@@ -20,7 +22,7 @@ public class VacancyCommand extends Command {
         }
         while(room != null);
         return availableRooms.isEmpty() ? Constants.NO_VACANT_ROOM : availableRooms.stream()
-                .collect(Collectors.joining(" "));
+                .collect(Collectors.joining(Constants.SPACE));
     }
 
 }
