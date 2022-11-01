@@ -14,8 +14,9 @@ public interface Room {
     void setNextAvailableRoom(Room room);
     Room getNextAvailableRoom();
     String addMeeting(Meeting meeting, String capacity);
+    void addMeeting(Meeting meeting);
     default boolean validate(Integer capacity){
-        return capacity < 2 ? false : capacity > 20 ? false : true;
+        return capacity < Constants.LOWER_LIMIT ? false : capacity > Constants.UPPER_LIMIT ? false : true;
     }
 
     default String addMeeting(Meeting meeting, String capacity, List<Meeting> meetingsScheduled) {
@@ -30,7 +31,7 @@ public interface Room {
             if(meetingsScheduled.stream()
                     .filter(existingMeeting -> existingMeeting.anyMeetingsExistsBetween(meeting))
                     .collect(Collectors.toList()).isEmpty()){
-                this.getMeetingsSchdeduled().add(meeting);
+                this.addMeeting(meeting);
                 return this.getName();
             }
         }

@@ -10,7 +10,9 @@ public class VacancyCommand extends Command {
 
     @Override
     public String executeCommand(List<String> args) {
+        //Getting the fromDateTime from args
         String fromDateTime = args.get(0);
+        //Getting the toDateTime from args
         String toDateTime = args.get(1);
         Meeting meeting = new Meeting(fromDateTime, toDateTime, this.bufferTimes);
 
