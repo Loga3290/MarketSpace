@@ -8,12 +8,11 @@ public class Tower implements Room {
     private final Integer capacity = 7;
     private final String name = "D-Tower";
     private List<Meeting> meetingsScheduled = new ArrayList<>();
-    private static Tower tower = null;
     private Room nextRoomToCheckAvl;
 
     @Override
     public Integer getCapacity() {
-        return capacity;
+        return this.capacity;
     }
 
     @Override

@@ -13,7 +13,7 @@ public interface Room {
     List<Meeting> getMeetingsSchdeduled();
     void setNextAvailableRoom(Room room);
     Room getNextAvailableRoom();
-
+    String addMeeting(Meeting meeting, String capacity);
     default boolean validate(Integer capacity){
         return capacity < 2 ? false : capacity > 20 ? false : true;
     }
@@ -48,6 +48,6 @@ public interface Room {
         }
     }
 
-    String addMeeting(Meeting meeting, String capacity);
+
 
 }

@@ -8,7 +8,6 @@ public class Cave implements Room {
     private final Integer capacity = 3;
     private final String name = "C-Cave";
     private List<Meeting> meetingsScheduled = new ArrayList<>();
-    private static Cave cave = null;
     private Room nextRoomToCheckAvl;
 
     @Override

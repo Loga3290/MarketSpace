@@ -8,11 +8,8 @@ public class Mansion implements Room{
     private final Integer capacity = 20;
     private final String name = "G-Mansion";
     private List<Meeting> meetingsScheduled = new ArrayList<>();
-    private static Mansion mansion = null;
     private Room nextRoomToCheckAvl;
-    /*private Mansion(){
 
-    }*/
     @Override
     public Integer getCapacity() {
         return capacity;
@@ -22,13 +19,6 @@ public class Mansion implements Room{
     public String getName() {
         return name;
     }
-
-    /*public static Room getInstance() {
-        if(mansion == null){
-            mansion = new Mansion();
-        }
-        return mansion;
-    }*/
 
     @Override
     public List<Meeting> getMeetingsSchdeduled() {
