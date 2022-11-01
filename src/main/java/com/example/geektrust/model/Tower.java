@@ -45,6 +45,6 @@ public class Tower implements Room {
 
     @Override
     public String addMeeting(Meeting meeting, String capacity) {
-        return Room.super.addMeeting(meeting, capacity, meetingsScheduled);
+        return Room.super.addMeeting(meeting, capacity, this.getMeetingsSchdeduled());
     }
 }

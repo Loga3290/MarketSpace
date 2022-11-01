@@ -59,6 +59,14 @@ public class Meeting {
                 && this.toDateTime.isBefore(bufferTime.getToDate())) {
             throw new IncorrecInputException("NO_VACANT_ROOM");
         }
+        if (bufferTime.getFromDate().isAfter(this.fromDateTime)
+                && bufferTime.getFromDate().isBefore(this.toDateTime)) {
+            throw new IncorrecInputException("NO_VACANT_ROOM");
+        }
+        if (bufferTime.getToDate().isAfter(this.fromDateTime)
+                && bufferTime.getToDate().isBefore(this.toDateTime)) {
+            throw new IncorrecInputException("NO_VACANT_ROOM");
+        }
     }
 
     public LocalDateTime getFromDateTime() {
