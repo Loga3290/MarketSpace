@@ -24,7 +24,7 @@ public abstract class Room {
         return capacity < Constants.LOWER_LIMIT ? false : capacity > Constants.UPPER_LIMIT ? false : true;
     }
 
-    protected String addMeeting(Meeting meeting, Integer requiredCapacity) {
+    String addMeeting(Meeting meeting, Integer requiredCapacity) {
         //Validate the requirements
         if(!validate(requiredCapacity)){
             throw new IncorrecInputException(Constants.NO_VACANT_ROOM);
@@ -46,7 +46,7 @@ public abstract class Room {
         return Constants.NO_VACANT_ROOM;
     }
 
-    protected String getAvailability(List<String> availableRooms, Meeting meeting, Room room){
+    String getAvailability(List<String> availableRooms, Meeting meeting, Room room){
         do{
             if(room.meetingsScheduled.stream().filter(existingMeeting -> existingMeeting.anyMeetingsExistsBetween(meeting))
                     .collect(Collectors.toList()).isEmpty()){
