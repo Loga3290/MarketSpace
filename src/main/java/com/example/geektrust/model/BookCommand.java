@@ -18,6 +18,6 @@ public class BookCommand extends Command{
         String capacity = args.get(2);
         Meeting meeting = new Meeting(fromDateTime, toDateTime, bufferTimes);
         Room room = this.room;
-        return room.addMeeting(meeting, Integer.valueOf(capacity));
+        return room.addRoomMeeting(meeting, Integer.valueOf(capacity));
     }
 }

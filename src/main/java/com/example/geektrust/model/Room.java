@@ -8,10 +8,11 @@ import java.util.stream.Collectors;
 
 public abstract class Room {
 
-    private  Integer capacity;
-    private  String name;
+    private Integer capacity;
+    private String name;
     private List<Meeting> meetingsScheduled;
     private Room nextRoom;
+
 
     public Room(Integer capacity, String name, List<Meeting> meetingsScheduled, Room nextRoom) {
         this.capacity = capacity;
@@ -19,6 +20,9 @@ public abstract class Room {
         this.meetingsScheduled = meetingsScheduled;
         this.nextRoom = nextRoom;
     }
+
+    abstract String addRoomMeeting(Meeting meeting, Integer requiredCapacity);
+    abstract String getRoomAvailability(List<String> availableRooms, Meeting meeting, Room room);
 
     boolean validate(Integer capacity){
         return capacity < Constants.LOWER_LIMIT ? false : capacity > Constants.UPPER_LIMIT ? false : true;

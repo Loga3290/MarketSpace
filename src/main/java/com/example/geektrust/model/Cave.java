@@ -10,12 +10,12 @@ public class Cave extends Room {
     }
 
     @Override
-    protected String addMeeting(Meeting meeting, Integer requiredCapacity) {
+    protected String addRoomMeeting(Meeting meeting, Integer requiredCapacity) {
         return super.addMeeting(meeting, requiredCapacity);
     }
 
     @Override
-    protected String getAvailability(List<String> availableRooms, Meeting meeting, Room room){
+    protected String getRoomAvailability(List<String> availableRooms, Meeting meeting, Room room){
         return super.getAvailability(availableRooms, meeting, room);
     }
 }

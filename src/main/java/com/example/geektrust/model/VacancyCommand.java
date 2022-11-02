@@ -17,7 +17,7 @@ public class VacancyCommand extends Command {
         String toDateTime = args.get(1);
         Meeting meeting = new Meeting(fromDateTime, toDateTime, this.bufferTimes);
         Room room = this.room;
-        return room.getAvailability(new ArrayList<>(), meeting, room);
+        return room.getRoomAvailability(new ArrayList<>(), meeting, room);
     }
 
 }
