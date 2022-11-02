@@ -6,49 +6,58 @@ import com.example.geektrust.util.Constants;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public interface Room {
+public abstract class Room {
 
-    Integer getCapacity();
-    String getName();
-    List<Meeting> getMeetingsSchdeduled();
-    void setNextAvailableRoom(Room room);
-    Room getNextAvailableRoom();
-    String addMeeting(Meeting meeting, String capacity);
-    void addMeeting(Meeting meeting);
-    default boolean validate(Integer capacity){
+    private  Integer capacity;
+    private  String name;
+    private List<Meeting> meetingsScheduled;
+    private Room nextRoom;
+
+    public Room(Integer capacity, String name, List<Meeting> meetingsScheduled, Room nextRoom) {
+        this.capacity = capacity;
+        this.name = name;
+        this.meetingsScheduled = meetingsScheduled;
+        this.nextRoom = nextRoom;
+    }
+
+    boolean validate(Integer capacity){
         return capacity < Constants.LOWER_LIMIT ? false : capacity > Constants.UPPER_LIMIT ? false : true;
     }
 
-    default String addMeeting(Meeting meeting, String capacity, List<Meeting> meetingsScheduled) {
+    protected String addMeeting(Meeting meeting, Integer requiredCapacity) {
         //Validate the requirements
-        if(!validate(Integer.parseInt(capacity))){
+        if(!validate(requiredCapacity)){
             throw new IncorrecInputException(Constants.NO_VACANT_ROOM);
         }
 
         //If room capacity fits
-        if(this.getCapacity() >= Integer.parseInt(capacity)){
+        if(this.capacity >= requiredCapacity){
             //Check if the room is available
-            if(meetingsScheduled.stream()
+            if(this.meetingsScheduled.stream()
                     .filter(existingMeeting -> existingMeeting.anyMeetingsExistsBetween(meeting))
                     .collect(Collectors.toList()).isEmpty()){
-                this.addMeeting(meeting);
-                return this.getName();
+                this.meetingsScheduled.add(meeting);
+                return this.name;
             }
         }
-        Room nextRoomToCheckAvl = this.getNextAvailableRoom();
-        if(nextRoomToCheckAvl != null){
-            return nextRoomToCheckAvl.addMeeting(meeting, capacity, nextRoomToCheckAvl.getMeetingsSchdeduled());
+        if(this.nextRoom != null){
+            return nextRoom.addMeeting(meeting, requiredCapacity);
         }
         return Constants.NO_VACANT_ROOM;
     }
 
-    default void getAvailability(List<Meeting> meetingsSchdeduled, List<String> availableRooms, Meeting meeting){
-        if(meetingsSchdeduled.stream().filter(existingMeeting -> existingMeeting.anyMeetingsExistsBetween(meeting))
-                .collect(Collectors.toList()).isEmpty()){
-            availableRooms.add(this.getName());
+    protected String getAvailability(List<String> availableRooms, Meeting meeting, Room room){
+        do{
+            if(room.meetingsScheduled.stream().filter(existingMeeting -> existingMeeting.anyMeetingsExistsBetween(meeting))
+                    .collect(Collectors.toList()).isEmpty()){
+                availableRooms.add(room.name);
+            }
+            room = room.nextRoom;
         }
+        while(room != null);
+        return availableRooms.isEmpty() ? Constants.NO_VACANT_ROOM : availableRooms.stream()
+                .collect(Collectors.joining(Constants.SPACE));
+
     }
-
-
 
 }

@@ -1,8 +1,7 @@
 package com.example.geektrust;
 
 import com.example.geektrust.exceptionhandling.IncorrecInputException;
-import com.example.geektrust.model.Command;
-import com.example.geektrust.model.CommandFactory;
+import com.example.geektrust.model.*;
 import com.example.geektrust.util.Constants;
 
 import java.io.FileInputStream;
@@ -15,10 +14,14 @@ import java.util.stream.Collectors;
 public class Main {
 
 
+    private static Room cave;
+
     public static void main(String[] args) throws IncorrecInputException {
 
 
         try {
+            initializeRooms();
+
             // the file to be opened for reading
             FileInputStream fis = new FileInputStream(args[0]);
             Scanner sc = new Scanner(fis); // file to be scanned
@@ -34,10 +37,16 @@ public class Main {
 
     }
 
+    private static void initializeRooms() {
+        Room mansion = new Mansion(null);
+        Room tower = new Tower(mansion);
+        cave = new Cave(tower);
+    }
+
     private static void executeCommand(String next) throws IncorrecInputException {
         try{
             List<String> args = Arrays.asList(next.split(Constants.SPACE));
-            Command command = CommandFactory.getCommandImpl(args.get(0));
+            Command command = CommandFactory.getCommandImpl(args.get(0), cave);
             System.out.println(command.executeCommand(args.stream().skip(1).collect(Collectors.toList())));
         } catch (IncorrecInputException ex){
             System.out.println(ex.getMessage());

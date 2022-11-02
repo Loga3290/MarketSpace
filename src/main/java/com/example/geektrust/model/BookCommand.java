@@ -4,6 +4,10 @@ import java.util.List;
 
 public class BookCommand extends Command{
 
+    public BookCommand(Room room) {
+        super(room);
+    }
+
     @Override
     public String executeCommand(List<String> args) {
         //Getting the fromDateTime from args
@@ -12,8 +16,8 @@ public class BookCommand extends Command{
         String toDateTime = args.get(1);
         //Getting the capacity from args
         String capacity = args.get(2);
-        Room room = this.room;
         Meeting meeting = new Meeting(fromDateTime, toDateTime, bufferTimes);
-        return room.addMeeting(meeting, capacity);
+        Room room = this.room;
+        return room.addMeeting(meeting, Integer.valueOf(capacity));
     }
 }

@@ -3,45 +3,20 @@ package com.example.geektrust.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Mansion implements Room{
+public class Mansion extends Room {
 
-    private final Integer capacity = 20;
-    private final String name = "G-Mansion";
-    private List<Meeting> meetingsScheduled = new ArrayList<>();
-    private Room nextRoomToCheckAvl;
-
-    @Override
-    public Integer getCapacity() {
-        return capacity;
+    public Mansion(Room nextRoom) {
+        super(20, "G-Mansion", new ArrayList<>(), nextRoom);
     }
 
     @Override
-    public String getName() {
-        return name;
+    protected String addMeeting(Meeting meeting, Integer requiredCapacity) {
+        return super.addMeeting(meeting, requiredCapacity);
     }
 
     @Override
-    public List<Meeting> getMeetingsSchdeduled() {
-        return this.meetingsScheduled;
+    protected String getAvailability(List<String> availableRooms, Meeting meeting, Room room){
+        return super.getAvailability(availableRooms, meeting, room);
     }
 
-    @Override
-    public void setNextAvailableRoom(Room room) {
-        nextRoomToCheckAvl = room;
-    }
-
-    @Override
-    public Room getNextAvailableRoom() {
-        return nextRoomToCheckAvl;
-    }
-
-    @Override
-    public String addMeeting(Meeting meeting, String capacity) {
-        return Room.super.addMeeting(meeting, capacity, this.meetingsScheduled);
-    }
-
-    @Override
-    public void addMeeting(Meeting meeting) {
-        this.meetingsScheduled.add(meeting);
-    }
 }
