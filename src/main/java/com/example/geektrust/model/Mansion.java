@@ -35,10 +35,10 @@ public class Mansion implements Room{
         return nextRoomToCheckAvl;
     }
 
-    @Override
+    /*@Override
     public String addMeeting(Meeting meeting, String capacity) {
         return Room.super.addMeeting(meeting, capacity, this.meetingsScheduled);
-    }
+    }*/
 
     @Override
     public void addMeeting(Meeting meeting) {

@@ -7,12 +7,8 @@ public abstract class Command {
 
     Room room;
 
-    Command(){
-        room = new Cave();
-        Room tower = new Tower();
-        Room mansion = new Mansion();
-        room.setNextAvailableRoom(tower);
-        tower.setNextAvailableRoom(mansion);
+    Command(Room room){
+        this.room =  room;
     }
 
     List<BufferTime> bufferTimes = Arrays.asList(new BufferTime("09:00","09:15"),

@@ -8,6 +8,10 @@ import java.util.stream.Collectors;
 
 public class VacancyCommand extends Command {
 
+    public VacancyCommand(Room room) {
+        super(room);
+    }
+
     @Override
     public String executeCommand(List<String> args) {
         //Getting the fromDateTime from args
