@@ -35,11 +35,6 @@ public class Cave implements Room {
         return nextRoomToCheckAvl;
     }
 
-    /*@Override
-    public String addMeeting(Meeting meeting, String capacity) {
-        return Room.super.addMeeting(meeting, capacity, this.meetingsScheduled);
-    }*/
-
     @Override
     public void addMeeting(Meeting meeting) {
         this.meetingsScheduled.add(meeting);
