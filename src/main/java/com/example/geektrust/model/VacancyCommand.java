@@ -8,6 +8,9 @@ import java.util.stream.Collectors;
 
 public class VacancyCommand extends Command {
 
+    public static final int FROM_DATE_INDEX = 0;
+    public static final int TO_DATE_INDEX = 1;
+
     public VacancyCommand(Room room) {
         super(room);
     }
@@ -15,9 +18,9 @@ public class VacancyCommand extends Command {
     @Override
     public String executeCommand(List<String> args) {
         //Getting the fromDateTime from args
-        String fromDateTime = args.get(0);
+        String fromDateTime = args.get(FROM_DATE_INDEX);
         //Getting the toDateTime from args
-        String toDateTime = args.get(1);
+        String toDateTime = args.get(TO_DATE_INDEX);
         Meeting meeting = new Meeting(fromDateTime, toDateTime, this.bufferTimes);
 
         List<String> availableRooms = new ArrayList<>();

@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 public class Main {
 
+    public static final int COMMAND_INDEX = 0;
     private static Room cave;
     public static void main(String[] args) throws IncorrecInputException {
 
@@ -20,7 +21,7 @@ public class Main {
         try {
             initializeRooms();
             // the file to be opened for reading
-            FileInputStream fis = new FileInputStream(args[0]);
+            FileInputStream fis = new FileInputStream(args[COMMAND_INDEX]);
             Scanner sc = new Scanner(fis); // file to be scanned
             // returns true if there is another line to read
             while (sc.hasNextLine()) {
@@ -37,7 +38,7 @@ public class Main {
     private static void executeCommand(String next) throws IncorrecInputException {
         try{
             List<String> args = Arrays.asList(next.split(Constants.SPACE));
-            Command command = CommandFactory.getCommandImpl(args.get(0), cave);
+            Command command = CommandFactory.getCommandImpl(args.get(COMMAND_INDEX), cave);
             System.out.println(command.executeCommand(args.stream().skip(1).collect(Collectors.toList())));
         } catch (IncorrecInputException ex){
             System.out.println(ex.getMessage());
