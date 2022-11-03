@@ -12,7 +12,7 @@ public class Tower implements Room {
 
     @Override
     public Integer getCapacity() {
-        return this.capacity;
+        return capacity;
     }
 
     @Override
@@ -22,7 +22,7 @@ public class Tower implements Room {
 
     @Override
     public void setNextAvailableRoom(Room room) {
-        this.nextRoomToCheckAvl = room;
+        nextRoomToCheckAvl = room;
     }
 
     @Override
@@ -32,11 +32,11 @@ public class Tower implements Room {
 
     @Override
     public List<Meeting> getMeetingsSchdeduled() {
-        return this.meetingsScheduled;
+        return meetingsScheduled;
     }
 
     @Override
     public void addMeeting(Meeting meeting) {
-        this.meetingsScheduled.add(meeting);
+        meetingsScheduled.add(meeting);
     }
 }
