@@ -8,6 +8,10 @@ import java.util.stream.Collectors;
 
 public class BookCommand extends Command{
 
+    public static final int CAPACITY_INDEX = 2;
+    public static final int TO_DATE_INDEX = 1;
+    public static final int FROM_DATE_INDEX = 0;
+
     public BookCommand(Room room) {
         super(room);
     }
@@ -15,11 +19,11 @@ public class BookCommand extends Command{
     @Override
     public String executeCommand(List<String> args) {
         //Getting the fromDateTime from args
-        String fromDateTime = args.get(0);
+        String fromDateTime = args.get(FROM_DATE_INDEX);
         //Getting the toDateTime from args
-        String toDateTime = args.get(1);
+        String toDateTime = args.get(TO_DATE_INDEX);
         //Getting the capacity from args
-        String capacity = args.get(2);
+        String capacity = args.get(CAPACITY_INDEX);
         Meeting meeting = new Meeting(fromDateTime, toDateTime, bufferTimes);
         return addMeeting(meeting, Integer.valueOf(capacity), room);
     }
