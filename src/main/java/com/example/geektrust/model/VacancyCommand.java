@@ -23,7 +23,12 @@ public class VacancyCommand extends Command {
         List<String> availableRooms = new ArrayList<>();
         Room room = this.room;
         do{
-            room.getAvailability(room.getMeetingsSchdeduled(), availableRooms, meeting);
+            //check whether room is available and do not have any meetings scheduled
+            if(room.getMeetingsSchdeduled().stream()
+                    .filter(existingMeeting -> existingMeeting.anyMeetingsExistsBetween(meeting))
+                    .collect(Collectors.toList()).isEmpty()){
+                availableRooms.add(room.getName());
+            }
             room = room.getNextAvailableRoom();
         }
         while(room != null);

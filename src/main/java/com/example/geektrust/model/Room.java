@@ -17,13 +17,4 @@ public interface Room {
         return capacity < Constants.LOWER_LIMIT ? false : capacity > Constants.UPPER_LIMIT ? false : true;
     }
 
-    default void getAvailability(List<Meeting> meetingsSchdeduled, List<String> availableRooms, Meeting meeting){
-        if(meetingsSchdeduled.stream().filter(existingMeeting -> existingMeeting.anyMeetingsExistsBetween(meeting))
-                .collect(Collectors.toList()).isEmpty()){
-            availableRooms.add(this.getName());
-        }
-    }
-
-
-
 }
