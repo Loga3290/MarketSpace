@@ -7,19 +7,17 @@ import java.util.List;
 
 public class Tower implements Room {
 
-    private final Integer capacity = Constants.TOWER_CAPACITY;
-    private final String name = Constants.TOWER_ROOM_NAME;
     private List<Meeting> meetingsScheduled = new ArrayList<>();
     private Room nextRoomToCheckAvl;
 
     @Override
     public Integer getCapacity() {
-        return capacity;
+        return Constants.TOWER_CAPACITY;
     }
 
     @Override
     public String getName() {
-        return name;
+        return Constants.TOWER_ROOM_NAME;
     }
 
     @Override

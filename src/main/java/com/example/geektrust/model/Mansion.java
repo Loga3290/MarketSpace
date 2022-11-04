@@ -7,19 +7,17 @@ import java.util.List;
 
 public class Mansion implements Room{
 
-    private final Integer capacity = Constants.MANSION_CAPACITY;
-    private final String name = Constants.MANSION_ROOM_NAME;
     private List<Meeting> meetingsScheduled = new ArrayList<>();
     private Room nextRoomToCheckAvl;
 
     @Override
     public Integer getCapacity() {
-        return capacity;
+        return Constants.MANSION_CAPACITY;
     }
 
     @Override
     public String getName() {
-        return name;
+        return Constants.MANSION_ROOM_NAME;
     }
 
     @Override
