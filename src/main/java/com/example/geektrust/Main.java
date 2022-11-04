@@ -2,6 +2,8 @@ package com.example.geektrust;
 
 import com.example.geektrust.exceptionhandling.IncorrecInputException;
 import com.example.geektrust.model.*;
+import com.example.geektrust.service.Command;
+import com.example.geektrust.service.CommandFactory;
 import com.example.geektrust.util.Constants;
 
 import java.io.FileInputStream;
@@ -35,7 +37,7 @@ public class Main {
 
     }
 
-    private static void executeCommand(String next) throws IncorrecInputException {
+    public static void executeCommand(String next) throws IncorrecInputException {
         try{
             List<String> args = Arrays.asList(next.split(Constants.SPACE));
             Command command = CommandFactory.getCommandImpl(args.get(COMMAND_INDEX), cave);
@@ -46,7 +48,7 @@ public class Main {
 
 
     }
-    private static void initializeRooms() {
+    public static void initializeRooms() {
         Room mansion = new Mansion();
         Room tower = new Tower();
         cave = new Cave();

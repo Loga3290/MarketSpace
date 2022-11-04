@@ -28,15 +28,8 @@ public class BufferTime {
         return fromDate;
     }
 
-    public void setFromDate(LocalDateTime fromDate) {
-        this.fromDate = fromDate;
-    }
-
     public LocalDateTime getToDate() {
         return toDate;
     }
 
-    public void setToDate(LocalDateTime toDate) {
-        this.toDate = toDate;
-    }
 }

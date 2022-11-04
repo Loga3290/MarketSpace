@@ -1,4 +1,7 @@
-package com.example.geektrust.model;
+package com.example.geektrust.service;
+
+import com.example.geektrust.model.BufferTime;
+import com.example.geektrust.model.Room;
 
 import java.util.Arrays;
 import java.util.List;

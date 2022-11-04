@@ -1,12 +1,14 @@
 package com.example.geektrust.model;
 
+import com.example.geektrust.util.Constants;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cave implements Room {
 
-    private final Integer capacity = 3;
-    private final String name = "C-Cave";
+    private final Integer capacity = Constants.CAVE_CAPACITY;
+    private final String name = Constants.CAVE_ROOM_NAME;
     private List<Meeting> meetingsScheduled = new ArrayList<>();
     private Room nextRoomToCheckAvl;
 

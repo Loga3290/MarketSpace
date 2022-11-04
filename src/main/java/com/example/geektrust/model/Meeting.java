@@ -1,6 +1,7 @@
 package com.example.geektrust.model;
 
 import com.example.geektrust.exceptionhandling.IncorrecInputException;
+import com.example.geektrust.util.Constants;
 import com.example.geektrust.util.Utility;
 
 import java.time.LocalDateTime;
@@ -19,7 +20,7 @@ public class Meeting {
             this.fromDateTime = Utility.getDateTime(fromDateTime);
             this.toDateTime = Utility.getDateTime(toDateTime);
         } catch (Exception ex) {
-            throw new IncorrecInputException("INCORRECT_INPUT");
+            throw new IncorrecInputException(Constants.INCORRECT_INPUT);
         }
 
         //If From date > to date
@@ -32,11 +33,11 @@ public class Meeting {
         LocalDateTime windowEndDate = Utility.getDateTime("00:00").plusDays(1);
         if (this.fromDateTime.isAfter(windowStartDate)
                 && this.fromDateTime.isBefore(windowEndDate)) {
-            throw new IncorrecInputException("INCORRECT_INPUT ");
+            throw new IncorrecInputException(Constants.INCORRECT_INPUT);
         }
         if (this.toDateTime.isAfter(windowStartDate)
                 && this.toDateTime.isBefore(windowEndDate)) {
-            throw new IncorrecInputException("INCORRECT_INPUT ");
+            throw new IncorrecInputException(Constants.INCORRECT_INPUT);
         }
 
         //If fromDate and toDate falls in every quarter-hour
@@ -80,7 +81,7 @@ public class Meeting {
 
 
 
-    boolean anyMeetingsExistsBetween(Meeting newMeeting) {
+    public boolean anyMeetingsExistsBetween(Meeting newMeeting) {
         LocalDateTime fromDateTime = newMeeting.getFromDateTime();
         LocalDateTime toDateTime = newMeeting.getToDateTime();
 

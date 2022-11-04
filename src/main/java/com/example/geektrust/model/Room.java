@@ -3,7 +3,6 @@ package com.example.geektrust.model;
 import com.example.geektrust.util.Constants;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public interface Room {
 

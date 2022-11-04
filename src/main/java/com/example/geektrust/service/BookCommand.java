@@ -1,6 +1,8 @@
-package com.example.geektrust.model;
+package com.example.geektrust.service;
 
 import com.example.geektrust.exceptionhandling.IncorrecInputException;
+import com.example.geektrust.model.Meeting;
+import com.example.geektrust.model.Room;
 import com.example.geektrust.util.Constants;
 
 import java.util.List;
